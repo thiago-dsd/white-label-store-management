@@ -47,8 +47,9 @@ backend/target/
 *.jar
 *.war
 
-# Maven wrapper (downloaded binary)
+# Maven wrapper (downloaded binaries)
 backend/.mvn/wrapper/maven-wrapper.jar
+backend/.mvn/maven/
 
 # Secrets
 /src/environments/environment.ts

@@ -19,11 +19,11 @@ logs:
 
 # Build the project (skip tests)
 build:
-	mvn clean package -DskipTests
+	mvnw.cmd clean package -DskipTests
 
 # Run the API
 run:
-	mvn spring-boot:run
+	mvnw.cmd spring-boot:run
 
 # Start everything (MySQL + API)
 start: up run
@@ -33,7 +33,7 @@ stop: down
 
 # Clean build artifacts
 clean:
-	mvn clean
+	mvnw.cmd clean
 
 # Open Swagger UI in browser
 docs:
