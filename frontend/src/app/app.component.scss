@@ -1,0 +1,30 @@
+nav {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: #1a1a2e;
+
+  a {
+    color: #a0a0b8;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+
+    &:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      color: #fff;
+      background: #4a4ae8;
+    }
+  }
+}
+
+main {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}

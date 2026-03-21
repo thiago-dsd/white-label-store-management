@@ -1,0 +1,38 @@
+<div class="page">
+  <h2>Clientes</h2>
+
+  <form class="form" (ngSubmit)="onSubmit()">
+    <input type="text" [(ngModel)]="form.nome" name="nome" placeholder="Nome" required />
+    <input type="date" [(ngModel)]="form.clienteDesde" name="clienteDesde" required />
+    <div class="form-actions">
+      <button type="submit">{{ editingId ? 'Atualizar' : 'Criar' }}</button>
+      <button type="button" *ngIf="editingId" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
+
+  <p *ngIf="store.isLoading">Carregando...</p>
+
+  <table *ngIf="store.customers.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Cliente Desde</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of store.customers">
+        <td>{{ c.id }}</td>
+        <td>{{ c.nome }}</td>
+        <td>{{ c.clienteDesde }}</td>
+        <td class="actions">
+          <button (click)="edit(c)">Editar</button>
+          <button class="danger" (click)="remove(c.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!store.isLoading && store.customers.length === 0">Nenhum cliente cadastrado.</p>
+</div>

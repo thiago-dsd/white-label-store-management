@@ -1,0 +1,44 @@
+<div class="page">
+  <h2>Produtos</h2>
+
+  <form class="form" (ngSubmit)="onSubmit()">
+    <input type="text" [(ngModel)]="form.nome" name="nome" placeholder="Nome do produto" required />
+    <input type="number" [(ngModel)]="form.preco" name="preco" placeholder="Preço" step="0.01" required />
+    <label class="checkbox">
+      <input type="checkbox" [(ngModel)]="form.estoque" name="estoque" />
+      Em estoque
+    </label>
+    <div class="form-actions">
+      <button type="submit">{{ editingId ? 'Atualizar' : 'Criar' }}</button>
+      <button type="button" *ngIf="editingId" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
+
+  <p *ngIf="store.isLoading">Carregando...</p>
+
+  <table *ngIf="store.products.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Estoque</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of store.products">
+        <td>{{ p.id }}</td>
+        <td>{{ p.nome }}</td>
+        <td>R$ {{ p.preco | number:'1.2-2' }}</td>
+        <td>{{ p.estoque ? 'Sim' : 'Não' }}</td>
+        <td class="actions">
+          <button (click)="edit(p)">Editar</button>
+          <button class="danger" (click)="remove(p.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!store.isLoading && store.products.length === 0">Nenhum produto cadastrado.</p>
+</div>

@@ -1,0 +1,50 @@
+<div class="page">
+  <h2>Pedidos</h2>
+
+  <form class="form" (ngSubmit)="onSubmit()">
+    <select [(ngModel)]="form.clienteId" name="clienteId" required>
+      <option [value]="0" disabled>Selecione um cliente</option>
+      <option *ngFor="let c of customerStore.customers" [ngValue]="c.id">{{ c.nome }}</option>
+    </select>
+
+    <select [(ngModel)]="form.produtoId" name="produtoId" required>
+      <option [value]="0" disabled>Selecione um produto</option>
+      <option *ngFor="let p of productStore.products" [ngValue]="p.id">{{ p.nome }} - R$ {{ p.preco | number:'1.2-2' }}</option>
+    </select>
+
+    <input type="number" [(ngModel)]="form.quantidade" name="quantidade" placeholder="Quantidade" min="1" required />
+
+    <div class="form-actions">
+      <button type="submit">{{ editingId ? 'Atualizar' : 'Criar' }}</button>
+      <button type="button" *ngIf="editingId" (click)="cancel()">Cancelar</button>
+    </div>
+  </form>
+
+  <p *ngIf="orderStore.isLoading">Carregando...</p>
+
+  <table *ngIf="orderStore.orders.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let o of orderStore.orders">
+        <td>{{ o.id }}</td>
+        <td>{{ o.cliente.nome }}</td>
+        <td>{{ o.produto.nome }}</td>
+        <td>{{ o.quantidade }}</td>
+        <td class="actions">
+          <button (click)="edit(o)">Editar</button>
+          <button class="danger" (click)="remove(o.id)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!orderStore.isLoading && orderStore.orders.length === 0">Nenhum pedido cadastrado.</p>
+</div>
