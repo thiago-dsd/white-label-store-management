@@ -41,6 +41,15 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Java / Maven
+backend/target/
+*.class
+*.jar
+*.war
+
+# Maven wrapper (downloaded binary)
+backend/.mvn/wrapper/maven-wrapper.jar
+
 # Secrets
 /src/environments/environment.ts
 /src/plugins-config/plugins-config.ts
