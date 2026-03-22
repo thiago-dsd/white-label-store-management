@@ -2,6 +2,10 @@
 
 REST API + Frontend for white-label store management, handling customers, products and orders.
 
+### 🎬 Project Overview
+
+[![Project Overview](https://img.youtube.com/vi/ffMVyArDu44/maxresdefault.jpg)](https://youtu.be/ffMVyArDu44)
+
 ---
 
 ## 🛠️ Tech Stack
