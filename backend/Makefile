@@ -37,4 +37,4 @@ clean:
 
 # Open Swagger UI in browser
 docs:
-	start http://localhost:8080/swagger-ui.html
+	cmd /c start http://localhost:8080/swagger-ui/index.html
