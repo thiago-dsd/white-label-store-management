@@ -178,36 +178,37 @@ ng serve
 ## 📐 Use Case Diagram
 
 ```mermaid
-flowchart LR
+flowchart TB
     Actor["🧑 Usuário da API"]
 
-    subgraph Cliente ["👤 Cliente"]
-        C1(Criar Cliente)
-        C2(Listar Clientes)
-        C3(Consultar Cliente por ID)
-        C4(Atualizar Cliente)
-        C5(Deletar Cliente)
+    subgraph CRUD ["Casos de Uso"]
+        direction LR
+        subgraph Cliente ["👤 Cliente"]
+            C1(Criar)
+            C2(Listar)
+            C3(Consultar por ID)
+            C4(Atualizar)
+            C5(Deletar)
+        end
+
+        subgraph Produto ["📦 Produto"]
+            P1(Criar)
+            P2(Listar)
+            P3(Consultar por ID)
+            P4(Atualizar)
+            P5(Deletar)
+        end
+
+        subgraph Pedido ["🛒 Pedido"]
+            O1(Criar)
+            O2(Listar)
+            O3(Consultar por ID)
+            O4(Atualizar)
+            O5(Deletar)
+        end
     end
 
-    subgraph Produto ["📦 Produto"]
-        P1(Criar Produto)
-        P2(Listar Produtos)
-        P3(Consultar Produto por ID)
-        P4(Atualizar Produto)
-        P5(Deletar Produto)
-    end
-
-    subgraph Pedido ["🛒 Pedido"]
-        O1(Criar Pedido)
-        O2(Listar Pedidos)
-        O3(Consultar Pedido por ID)
-        O4(Atualizar Pedido)
-        O5(Deletar Pedido)
-    end
-
-    Actor --- C1 & C2 & C3 & C4 & C5
-    Actor --- P1 & P2 & P3 & P4 & P5
-    Actor --- O1 & O2 & O3 & O4 & O5
+    Actor --- CRUD
 ```
 
 ---
